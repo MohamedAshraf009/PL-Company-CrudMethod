@@ -1,0 +1,42 @@
+﻿@model ApplicationUser
+@{
+    ViewData["Title"] = "Update";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Update</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="update" asp-asp-controller="User">
+            <input hidden asp-for="@Model.Id" />
+            <div class="form-group">
+                <label asp-for="@Model.UserName" class="col-form-label"></label>
+                <input asp-for="@Model.UserName" placeholder="UserName" class="form-control" /><br />
+                <span asp-validation-for="@Model.UserName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.NormalizedUserName" class="col-form-label"></label>
+                <input asp-for="@Model.NormalizedUserName" placeholder="NormalizedUserName" class="form-control" /><br />
+                <span asp-validation-for="@Model.NormalizedUserName" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label asp-for="@Model.PhoneNumber" class="col-form-label"></label>
+                <input asp-for="@Model.PhoneNumber" placeholder="PhoneNumber" class="form-control" /><br />
+                <span asp-validation-for="@Model.PhoneNumber" class="text-danger"></span>
+
+            </div>
+
+            <input type="submit" value="update" /><br />
+            <a asp-action="Index" class="btn btn-light">back</a>
+        </form>
+    </div>
+</div>
+
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

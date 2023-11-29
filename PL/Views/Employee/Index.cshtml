@@ -1,0 +1,92 @@
+﻿@model IEnumerable<EmployeeViewModel>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>All Employess</h1>
+
+<a asp-action="create" asp-controller="Employee" class="btn btn-primary">create employee</a>
+
+@*@if(ViewBag.MessageBag != null){
+    <div class=" align-content-center">
+    <h3 class="m-auto font-weight-bold alert-danger">@ViewBag.MessageBag</h3>
+    </div>
+}
+@if(ViewData["MessageData"] != null){
+<div class="align-content-center">
+    <h3 class="m-auto alert-danger">@ViewData["MessageData"]</h3>
+</div>
+}*@
+
+@if (TempData["Message"] != null)
+{
+    <div class="align-content-center">
+        <h3 class="m-auto alert-danger">@TempData["Message"]</h3>
+    </div>
+}
+<br />
+<br />
+<form class="my-3" asp-action="Index" asp-controller="Employee">
+    <div class="row">
+        <div class="col-sm-8">
+            <input  placeholder="Search by Name" name="searchValue"  class="form-control"/>
+        </div>
+        <div class="col-sm-4">
+            <input type="submit" value="search" class="btn btn-success btn-block" /> 
+        </div>
+    </div>
+</form>
+
+@if ((Model?.Count() > 0))
+{
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                @*<th scope="col">#</th>*@
+                <th scope="col">@Html.DisplayNameFor(a=>a.email)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.Name)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.HireDate)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.address)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.age)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.Image)</th>
+
+                <th scope="col">@Html.DisplayNameFor(a=>a.isActive)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.salary)</th>
+                <th scope="col">@Html.DisplayNameFor(a=>a.phoneNumber)</th>
+
+                <th scope="col">details</th>
+                <th scope="col">edit</th>
+                <th scope="col">delete</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.email</td>
+                    <td>@item.Name</td>
+                    <td>@item.HireDate</td>
+                    <td>@item.address</td>
+                    <td>@item.age</td>
+                    <td>
+                        <img src="~/Files/images/@item.ImageUrl" class="img-circle" alt="@item.Name Image">
+                    </td>
+                    <td>@item.isActive</td>
+                    <td>@item.salary</td>
+                    <td>@item.phoneNumber</td>
+
+                    <partial name="ButtonsViewPartial"  model="@item.Id.ToString()"></partial>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+}
+else
+{
+    <div class="alert alert-warning mt-5">
+        <h3>no Employees found</h3>
+    </div>
+
+}

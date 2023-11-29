@@ -1,0 +1,24 @@
+﻿@model IdentityRole
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Create</h1>
+
+<div class="row">
+    <div class="col-6">
+        <form asp-action="Create" asp-controller="Roles">
+            @*<input hidden asp-for="@Model.Id" />*@
+            <div class="form-group">
+                <label asp-for="@Model.Name" class="col-form-label"></label>
+                <input asp-for="@Model.Name" placeholder="UserName" class="form-control" /><br />
+                <span asp-validation-for="@Model.Name" class="text-danger"></span>
+            </div>
+
+
+            <input type="submit" value="Create" /><br />
+            <a asp-action="Index" asp-controller="Roles" class="btn btn-light">back</a>
+        </form>
+    </div>
+</div>

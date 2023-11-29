@@ -1,0 +1,41 @@
+﻿@model LoginViewModel
+<form asp-action="SignIn" >
+    <!-- Email input -->
+    <div class="form-outline mb-4">
+        <input type="email" id="form2Example1" asp-for="@Model.Email"  class="form-control" />
+        <label class="form-label" asp-for="@Model.Email" for="form2Example1">Email address</label>
+        <span asp-validation-for="@Model.Email"></span>
+    </div>
+
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+        <input type="password" asp-for="@Model.Password" id="form2Example2" class="form-control" />
+        <label class="form-label" asp-for="@Model.Password" for="form2Example2">Password</label>
+        <span asp-validation-for="@Model.Password"></span>
+    </div>
+
+   
+    <div class="row mb-4">
+        <div class="col d-flex justify-content-center">
+           
+            <div class="form-check">
+                <input class="form-check-input" asp-for="@Model.RememberMe" type="checkbox" value="" id="form2Example31" />
+                <label class="form-check-label" asp-for="@Model.RememberMe" for="form2Example31"> Remember me </label>
+            </div>
+        </div>
+    </div>
+    <input type="submit" class="btn btn-primary btn-block mb-4" value="SignIn">
+
+</form>
+
+<div class="col">
+   
+    <a asp-action="ForgetPassword" asp-controller="Account" >Forgot password?</a>
+</div>
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}

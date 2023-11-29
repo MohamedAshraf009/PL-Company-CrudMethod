@@ -1,0 +1,56 @@
+﻿
+@model RegisterViewModel
+
+<form class="mx-1 mx-md-4" asp-action="SignUp">
+
+    <div class="d-flex flex-row align-items-center mb-4">
+      
+        <div class="form-outline mb-4">
+            <input type="email" id="form2Example1" asp-for="@Model.Email" class="form-control" />
+            <label class="form-label" for="form2Example1" asp-for="@Model.Email">Email address</label>
+            <span asp-validation-for="@Model.Email"></span>
+        </div>
+
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+       
+        <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" asp-for="@Model.Password" class="form-control" />
+            <label class="form-label" for="form2Example2" asp-for="@Model.Password">Password</label>
+            <span asp-validation-for="@Model.Password"></span>
+        </div>
+    </div>
+
+    <div class="d-flex flex-row align-items-center mb-4">
+       
+       
+        <div class="form-outline mb-4">
+            <input type="password" id="form2Example2" asp-for="@Model.ConfirmPassword" class="form-control" />
+            <label class="form-label" for="form2Example2" asp-for="@Model.ConfirmPassword">Repeat your password</label>
+            <span asp-validation-for="@Model.ConfirmPassword"></span>
+        </div>
+    </div>
+    <div class="form-check d-flex justify-content-center mb-5">
+        <input class="form-check-input me-2" asp-for="@Model.IsAgree" type="checkbox"  value="true" />
+        <label class="form-check-label" for="form2Example3">
+            I agree all statements in Terms of service
+        </label>
+    </div>
+    <br />
+        <input type="submit" class="btn btn-primary btn-lg" value="SignUp">
+    
+        <div>
+        <p>Are you a member? <a  asp-action="SignIn">Login</a></p>
+       
+        </div>
+</form>
+
+
+
+@section scripts{
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+
+}
